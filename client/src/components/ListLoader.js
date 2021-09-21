@@ -1,7 +1,7 @@
   
 import React from "react";
 import useAxiosOnMount from "./Hooks/useAxiosOnMount";
-import SemanticLoadError from "./SemanticError";
+import SemanticLoadError from "./SemanticLoadError";
 import SematicLoader from "./SemanticLoader";
 
 export default function ListLoader({ url, renderData, header }) {
