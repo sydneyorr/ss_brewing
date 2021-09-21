@@ -1,10 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './components/NavBar';
+import "./App.css";
+import { Container } from "semantic-ui-react";
+import { Route, Switch } from "react-router";
+import { routes } from "./components/routes";
+import NavBar from "./components/NavBar.js";
 
 function App() {
+const renderRoutes = () => {
+  return routes.map((route)=> (
+    <Route exact path = {route.pathname} component={route.component} />
+  ))
+}
+
+
+
+
   return (
-    <Navbar />
+    <>
+      <NavBar />
+      <Container>
+        <Switch>
+          {renderRoutes()}
+        </Switch>
+      </Container>
+    </>
   );
 }
 

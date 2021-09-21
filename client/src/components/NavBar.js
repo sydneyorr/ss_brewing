@@ -1,11 +1,25 @@
-import React from "react"
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
+import { routes } from "./routes";
+import 'semantic-ui-css/semantic.min.css'
 
-const Navbar = () => {
-  return (
-    <div>
-      <p>Navbar</p>
-    </div>
-  )
+class NavBar extends React.Component {
+  renderRoutes = () => {
+    const { location } = this.props;
+    return routes.map(({pathname, title}) => {
+      return (
+        <Link to={pathname}>
+          <Menu.Item active={location.pathname == pathname}>{title}</Menu.Item>
+        </Link>
+      )
+    })
+  }
+  render() {
+    return <Menu>{this.renderRoutes()}</Menu>
+  }
 }
 
-export default Navbar
+export default withRouter(NavBar);
+
+
