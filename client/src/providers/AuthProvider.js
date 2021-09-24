@@ -8,20 +8,20 @@ export const AuthConsumer = AuthContext.Consumer;
 
 export const AuthProvider = (props) => {
   const [user, setUser] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleRegister = async (user, history) => {
     console.log("regsiter user:", user);
     // so axios call now
     try {
+      setError(null)
       let res = await axios.post("/api/auth", user);
       console.log(res);
       setUser(res.data.data);
       history.push("/");
     } catch (err) {
       // want to handle this in your UI for you sake
-      alert(
-        "unsuccessful register check console. maybe email is not unique pass invalid"
-      );
+      setError(err.response ? err.response : err)
       console.log(err);
       console.log(err.response);
     }
@@ -53,6 +53,8 @@ export const AuthProvider = (props) => {
   return (
     <AuthContext.Provider value={{
       user,
+      error,
+      setError,
       handleRegister,
       handleLogin,
       handleLogout,

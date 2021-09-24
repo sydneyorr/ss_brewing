@@ -2,20 +2,22 @@ import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Form } from "semantic-ui-react"
 import { AuthContext } from "../providers/AuthProvider"
+import SemanticLoadError from "./SemanticLoadError"
 
 const Register = () => {
   const history = useHistory();
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
+  const [name, setName] = useState(null)
   const [passwordConfirmation, setPasswordConfirmation] = useState(null)
-  const { handleRegister } = useContext(AuthContext);
+  const { handleRegister, error, setError } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     if (password !== passwordConfirmation) {
-      alert("passwords do not match");
+      alert("passwords do not match")
       return;
     } else {
-    handleRegister( { email, password }, history )
+    handleRegister( { email, password, name }, history )
     }
 
   };
@@ -24,7 +26,14 @@ const Register = () => {
   return (
     <div>
       <h1>Create an Account</h1>
+      {error && <SemanticLoadError />}
       <Form onSubmit={handleSubmit}>
+        <Form.Input
+        value={name}
+        onChange={(e, {value}) => {
+          setName(value);
+        }}
+        label={"Name"} />
         <Form.Input
         value={email}
         onChange={(e, {value}) => {
