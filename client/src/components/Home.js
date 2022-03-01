@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <p>caption</p>
         <input
           type="text"
@@ -63,7 +63,7 @@ export default function Home() {
         <button type="submit">add</button>
       </form>
       <Image src={url} />
-      <JustImageUpload />
+      <JustImageUpload /> */}
     </div>
   );
 }

@@ -18,16 +18,16 @@ const NavBar = (props) => {
           <Menu.Item onClick={ () => handleLogout(history) }>Logout</Menu.Item>
       )
     }
-      return (
-        <>
-          <Link to='/login'>
-            <Menu.Item active={location.pathname === '/login'}>Login</Menu.Item>
-          </Link>
-          <Link to='/register'>
-            <Menu.Item active={location.pathname === '/register'}>Register</Menu.Item>
-          </Link>
-        </>
-      )
+      // return (
+        // <>
+        //   <Link to='/login'>
+        //     <Menu.Item active={location.pathname === '/login'}>Login</Menu.Item>
+        //   </Link>
+        //   <Link to='/register'>
+        //     <Menu.Item active={location.pathname === '/register'}>Register</Menu.Item>
+        //   </Link>
+        // </>
+      // )
     };
 
     const renderRoutes = () => {
